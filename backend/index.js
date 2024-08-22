@@ -15,7 +15,7 @@ const path = require('path');
 const usersRouter = require('./routes/users');
 
 // Configuração dotenv
-dotenv.config()
+dotenv.config();
 
 // Models
 const User = require('./models/users');
