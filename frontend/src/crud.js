@@ -1,6 +1,6 @@
 export const cadastroServer = async (nome, email, senha) => {
   try {
-    const response = await fetch('http://localhost:8080/users/cadastro', {
+    const response = await fetch('https://chat-io-c2w3.onrender.com/users/cadastro', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ nome, email, senha }),
@@ -20,7 +20,7 @@ export const cadastroServer = async (nome, email, senha) => {
 
 export const loginServer = async (email, senha) => {
   try {
-    const response = await fetch('http://localhost:8080/users/login', {
+    const response = await fetch('https://chat-io-c2w3.onrender.com/users/login', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({ email, senha }),
@@ -40,7 +40,7 @@ export const loginServer = async (email, senha) => {
 
 export const pesquisarServer = async (e) => {
   try {
-    const response = await fetch('http://localhost:8080/pesquisa/' + e);
+    const response = await fetch('https://chat-io-c2w3.onrender.com/pesquisa/' + e);
 
     if (!response.ok) {
       throw new Error('Erro ao pesquisar');
@@ -56,7 +56,7 @@ export const pesquisarServer = async (e) => {
 
 export const getUserServer = async () => {
   try {
-    const response = await fetch('http://localhost:8080/users/perfil', {
+    const response = await fetch('https://chat-io-c2w3.onrender.com/users/perfil', {
       method: 'GET',
       credentials: 'include'
     });
@@ -75,7 +75,7 @@ export const getUserServer = async () => {
 
 export const buscarMensagensServer = async (de, para) => {
   try {
-    const response = await fetch('http://localhost:8080/mensagens-antigas', {
+    const response = await fetch('https://chat-io-c2w3.onrender.com/mensagens-antigas', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ de, para })
@@ -100,7 +100,7 @@ export const changeImagePerfilServer = async (imageSrc, id) => {
     formData.append('data', imageSrc);
     formData.append('id', id);
 
-    const response = await fetch('http://localhost:8080/image', {
+    const response = await fetch('https://chat-io-c2w3.onrender.com/image', {
       method: 'POST',
       body: formData
     });
@@ -120,7 +120,7 @@ export const changeImagePerfilServer = async (imageSrc, id) => {
 
 export const getUsersTalkServer = async (data) => {
   try {
-    const response = await fetch('http://localhost:8080/users-talk', {
+    const response = await fetch('https://chat-io-c2w3.onrender.com/users-talk', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ data })

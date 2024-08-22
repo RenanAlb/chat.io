@@ -27,14 +27,14 @@ const port = process.env.PORT || 8080;
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: 'https://chat-io-frontend.onrender.com',
     methods: ['GET', 'POST']
   }
 });
 app.use(cookieParser());
 
 // Middlewares
-app.use(cors({origin: 'http://localhost:5173', credentials: true}));
+app.use(cors({origin: 'https://your-frontend-url.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));

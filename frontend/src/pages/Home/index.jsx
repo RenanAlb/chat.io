@@ -6,7 +6,7 @@ import Chat from "../../components/Chat";
 import io from 'socket.io-client';
 import { getUserServer } from "../../crud";
 
-const socket = io('http://localhost:8080');
+const socket = io('https://chat-io-c2w3.onrender.com', { withCredentials: true });
 
 const Home = () => {
   const [windows, setWindows] = useState(window.innerWidth);
