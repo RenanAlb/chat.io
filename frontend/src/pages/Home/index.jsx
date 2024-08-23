@@ -8,6 +8,14 @@ import { getUserServer } from "../../crud";
 
 const socket = io('https://chat-io-c2w3.onrender.com', { withCredentials: true });
 
+socket.on('connect', () => {
+  console.log('Conectado ao servidor Socket.IO');
+});
+
+socket.on('connect_error', (error) => {
+  console.error('Erro de conexão com o servidor Socket.IO:', error);
+});
+
 const Home = () => {
   const [windows, setWindows] = useState(window.innerWidth);
   const [selectedChat, setSelectedChat] = useState(null);
