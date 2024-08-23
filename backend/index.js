@@ -43,7 +43,7 @@ app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.static('public/images'));
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
 // Storage
 const storage = multer.diskStorage({
@@ -63,7 +63,7 @@ connectToMongoDB();
 
 // Rotas
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'frontend/dist/index.html'));
 });
 
 app.use('/users', usersRouter);
