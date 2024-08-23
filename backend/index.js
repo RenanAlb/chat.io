@@ -28,14 +28,16 @@ const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: 'https://chat-io-frontend.onrender.com',
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 app.use(cookieParser());
 
 // Middlewares
 app.use(cors({
-  origin: 'https://chat-io-frontend.onrender.com', credentials: true
+  origin: 'https://chat-io-frontend.onrender.com',
+  credentials: true
 }));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
