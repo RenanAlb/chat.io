@@ -6,7 +6,7 @@ import Chat from "../../components/Chat";
 import io from 'socket.io-client';
 import { getUserServer } from "../../crud";
 
-const socket = io('https://chat-io-c2w3.onrender.com');
+const socket = io('https://chat-io-c2w3.onrender.com', { withCredentials: true });
 
 socket.on('connect', () => {
   console.log('Conectado ao servidor Socket.IO');

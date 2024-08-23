@@ -28,8 +28,7 @@ const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: 'https://chat-io-frontend.onrender.com',
-    methods: ['GET', 'POST'],
-    credentials: true
+    methods: ['GET', 'POST']
   }
 });
 app.use(cookieParser());
