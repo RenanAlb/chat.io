@@ -42,6 +42,7 @@ app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.static('public/images'));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Storage
 const storage = multer.diskStorage({
