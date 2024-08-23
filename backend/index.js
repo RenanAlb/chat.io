@@ -62,6 +62,9 @@ const upload = multer({ storage: storage });
 connectToMongoDB();
 
 // Rotas
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
   const termo = req.params.termo;
