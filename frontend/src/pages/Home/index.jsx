@@ -6,18 +6,7 @@ import Chat from "../../components/Chat";
 import io from 'socket.io-client';
 import { getUserServer } from "../../crud";
 
-const socket = io('https://chat-io-c2w3.onrender.com', {
-  transports: ['websocket'],
-  withCredentials: true
-});
-
-socket.on('connect', () => {
-  console.log('Conectado ao servidor Socket.IO');
-});
-
-socket.on('connect_error', (error) => {
-  console.error('Erro de conexão com o servidor Socket.IO:', error);
-});
+const socket = io('http://localhost:8080', { withCredentials: true });
 
 const Home = () => {
   const [windows, setWindows] = useState(window.innerWidth);
