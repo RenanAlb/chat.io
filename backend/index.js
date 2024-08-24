@@ -34,7 +34,7 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -56,6 +56,9 @@ const upload = multer({ storage: storage });
 
 // Conexão ao MongoDB
 connectToMongoDB();
+
+const filePath = path.join(__dirname, '../frontend/dist', 'index.html');
+console.log(filePath)
 
 // Rotas
 app.get('*', (req, res) => {
