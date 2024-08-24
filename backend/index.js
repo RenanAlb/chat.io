@@ -11,12 +11,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 
-fs.readdir(path.join(__dirname, '../frontend'), (err, files) => {
+fs.readdir('/opt/render/project/src/frontend', (err, files) => {
   if (err) {
-    console.error('Erro ao ler diretório:', err);
-    return;
+    console.error('Error reading directory:', err);
+  } else {
+    console.log('Directory contents:', files);
   }
-  console.log('Conteúdo do diretório frontend:', files);
 });
 
 // Rotas.js
