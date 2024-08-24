@@ -59,9 +59,9 @@ connectToMongoDB();
 
 // Rotas
 app.get('*', async (req, res) => {
-  const filePath = path.join(__dirname, '../frontend/dist', 'index.html');
-  console.log(filePath);
-  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+  const filePath = path.join(__dirname, '../frontend/dist/index.html');
+  console.log('File path:', filePath);
+  res.sendFile(filePath);
 });
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
