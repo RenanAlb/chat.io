@@ -60,7 +60,7 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../frontend/dist copy')));
 app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -89,7 +89,7 @@ app.get('*', async (req, res) => {
   console.log('File path:', filePath);
   console.log('Current Directory:', __dirname);
   console.log('Serving files from:', path.join(__dirname, '../frontend/dist'));
-  res.sendFile(filePath);
+  res.sendFile(path.join(__dirname, '../frontend/dist copy/index.html'));
 });
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
