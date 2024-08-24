@@ -60,7 +60,7 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-app.use(express.static(path.join(__dirname, '../frontend/dist copy')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -84,12 +84,12 @@ const upload = multer({ storage: storage });
 connectToMongoDB();
 
 // Rotas
-app.get('*', async (req, res) => {
+app.get('*', (req, res) => {
   const filePath = path.join(__dirname, '../frontend/dist/index.html');
   console.log('File path:', filePath);
   console.log('Current Directory:', __dirname);
   console.log('Serving files from:', path.join(__dirname, '../frontend/dist'));
-  res.sendFile(path.join(__dirname, '../frontend/dist copy/index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
