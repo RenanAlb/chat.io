@@ -9,6 +9,15 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
+
+fs.readdir(path.join(__dirname, '../frontend'), (err, files) => {
+  if (err) {
+    console.error('Erro ao ler diretório:', err);
+    return;
+  }
+  console.log('Conteúdo do diretório frontend:', files);
+});
 
 // Rotas.js
 const usersRouter = require('./routes/users');
