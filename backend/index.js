@@ -61,6 +61,8 @@ connectToMongoDB();
 app.get('*', async (req, res) => {
   const filePath = path.join(__dirname, '../frontend/dist/index.html');
   console.log('File path:', filePath);
+  console.log('Current Directory:', __dirname);
+  console.log('Serving files from:', path.join(__dirname, '../frontend/dist'));
   res.sendFile(filePath);
 });
 app.use('/users', usersRouter);
