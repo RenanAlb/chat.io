@@ -11,13 +11,30 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 
-fs.readdir('/opt/render/project/src/frontend', (err, files) => {
-  if (err) {
-    console.error('Error reading directory:', err);
-  } else {
-    console.log('Directory contents:', files);
-  }
-});
+// Função para listar o conteúdo de um diretório
+const listDirectoryContents = (directoryPath) => {
+  fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+      console.error(`Error reading directory ${directoryPath}:`, err);
+    } else {
+      console.log(`Contents of directory ${directoryPath}:`, files);
+    }
+  });
+};
+
+// Diretório base do backend
+const backendDirectory = __dirname;
+
+// Diretório onde o frontend deveria estar
+const frontendDirectory = path.join(__dirname, '../frontend');
+
+// Diretório 'dist' dentro do frontend
+const distDirectory = path.join(frontendDirectory, 'dist');
+
+// Adicionar código de logging
+listDirectoryContents(backendDirectory);
+listDirectoryContents(frontendDirectory);
+listDirectoryContents(distDirectory)
 
 // Rotas.js
 const usersRouter = require('./routes/users');
