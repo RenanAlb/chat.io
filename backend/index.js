@@ -10,7 +10,6 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-
 // Rotas.js
 const usersRouter = require('./routes/users');
 
@@ -35,7 +34,7 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -60,7 +59,7 @@ connectToMongoDB();
 
 // Rotas
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
