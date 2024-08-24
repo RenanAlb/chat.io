@@ -57,11 +57,10 @@ const upload = multer({ storage: storage });
 // Conexão ao MongoDB
 connectToMongoDB();
 
-const filePath = path.join(__dirname, '../frontend/dist', 'index.html');
-console.log(filePath)
-
 // Rotas
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
+  const filePath = path.join(__dirname, '../frontend/dist', 'index.html');
+  console.log(filePath);
   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 app.use('/users', usersRouter);
