@@ -34,7 +34,7 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-// app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -58,9 +58,9 @@ const upload = multer({ storage: storage });
 connectToMongoDB();
 
 // Rotas
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
   const termo = req.params.termo;
