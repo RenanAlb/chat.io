@@ -8,7 +8,6 @@ export default defineConfig({
     outDir: 'dist', // Diretório onde a build será gerada
     rollupOptions: {
       input: 'index.html', // Caminho para o arquivo de entrada
-    },
-    base: '/',
+    }
   },
 })

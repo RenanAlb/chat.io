@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && ls -l dist",
+    "build": "vite build && ls -l /opt/render/project/src/frontend/dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
