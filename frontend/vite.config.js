@@ -9,5 +9,6 @@ export default defineConfig({
     rollupOptions: {
       input: 'index.html', // Caminho para o arquivo de entrada
     },
+    base: '/assets/',
   },
 })
