@@ -116,7 +116,7 @@ const Cadastro = () => {
             onChange={(e) => setSenha(e.target.value)}
           />
           <button type="submit">Confirmar</button>
-          <p>Já tem uma conta? <a href="#">Clique aqui</a></p>
+          <p>Já tem uma conta? <a href="https://chat-io-jpz0.onrender.com/login">Clique aqui</a></p>
         </form>
       </div>
     </Container>

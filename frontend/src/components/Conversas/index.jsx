@@ -72,7 +72,7 @@ const Conversas = ({ onSelectChat }) => {
                 }
                   {
                     usuario.imagemPerfil ?
-                    (<img src={`http://localhost:8080/${usuario.imagemPerfil}`}  />)
+                    (<img src={`https://chat-io-jpz0.onrender.com/${usuario.imagemPerfil}`}  />)
                     :
                     (<img src={profileImg} alt="" />)
                   }
@@ -98,7 +98,7 @@ const Conversas = ({ onSelectChat }) => {
                 <div key={index} className="conversa" onClick={() => onSelectChat(usuario)} id={theme == 'light' ? 'light-conversas' : 'dark-conversas'}>
                   {
                     usuario.imagemPerfil ?
-                    (<img src={`http://localhost:8080/${usuario.imagemPerfil}`}  />)
+                    (<img src={`https://chat-io-jpz0.onrender.com/${usuario.imagemPerfil}`}  />)
                     :
                     (<img src={profileImg} alt="" />)
                   }

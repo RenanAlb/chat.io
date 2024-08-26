@@ -111,6 +111,8 @@ app.post('/mensagens-antigas', async (req, res) => {
     res.status(500).json({ mensagem: 'Erro ao buscar mensagens', ok: false });
   }
 });
+
+// Conversas com usuários
 app.post('/users-talk', async (req, res) => {
   try {
     const { data } = req.body;
