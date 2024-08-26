@@ -73,7 +73,7 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
                   :
                   null
                 }
-                <img src={talkUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/${talkUser.imagemPerfil}` : profileImg} alt="Imagem de perfil do usuário" />
+                <img src={talkUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${talkUser.imagemPerfil}` : profileImg} alt="Imagem de perfil do usuário" />
                 <p style={{ color: theme === 'light' ? 'black' : '' }}>{chat._id == user ? chat.nome + ' (Você)' : chat.nome }</p>
               </div>
             </div>

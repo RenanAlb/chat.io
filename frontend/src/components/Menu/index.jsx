@@ -51,7 +51,7 @@ const Menu = () => {
             {
               windows < 1246 ?
               (<Link to="/perfil" className={theme == 'light' ? 'light-link' : 'dark-link'}>
-                <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/${dadosUser.imagemPerfil}` : profileImg} alt="" />
+                <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${dadosUser.imagemPerfil}` : profileImg} alt="" />
               </Link>)
               :
               (null)
@@ -66,7 +66,7 @@ const Menu = () => {
                   (
                     <Link to="/perfil" className={theme == 'light' ? 'light-link' : 'dark-link'}>
                       <li className={theme == 'light' ? 'light-li' : 'dark-li'}>
-                        <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/${dadosUser.imagemPerfil}` : profileImg} alt="" />
+                        <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${dadosUser.imagemPerfil}` : profileImg} alt="" />
                         {
                           windows > 1246 ?
                           (<p style={{ color: theme == 'light' ? 'black' : '' }}>Perfil</p>)
