@@ -60,7 +60,6 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
 app.use(cors({origin: 'https://chat-io-jpz0.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -84,13 +83,6 @@ const upload = multer({ storage: storage });
 connectToMongoDB();
 
 // Rotas
-app.get('*', (req, res) => {
-  const filePath = path.join(__dirname, '../frontend/dist');
-  console.log('File path:', filePath);
-  console.log('Current Directory:', __dirname);
-  console.log('Serving files from:', path.join(__dirname, '../frontend/dist'));
-  res.sendFile(path.join(filePath, 'index.html'));
-});
 app.use('/users', usersRouter);
 app.get('/pesquisa/:termo', async (req, res) => {
   const termo = req.params.termo;
@@ -214,6 +206,13 @@ io.on('connection', (socket) => {
     users = users.filter((user) => user.socketId !== socket.id)
     console.log(`Cliente desconectado: ${socket.id}`);
   });
+});
+
+// Retornar página html
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get('*', (req, res) => {
+  const filePath = path.join(__dirname, '../frontend/dist');
+  res.sendFile(path.join(filePath, 'index.html'));
 });
 
 // Iniciar servidor
