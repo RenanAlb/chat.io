@@ -20,6 +20,18 @@ export const ContainerMenu = styled.div`
     }
   }
 
+  #image {
+    background-color: white;
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .image-perfil span {
     background-color: ${Themes.colors.light_gray};
     width: 42px;

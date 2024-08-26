@@ -66,7 +66,7 @@ const Menu = () => {
                   (
                     <Link to="/perfil" className={theme == 'light' ? 'light-link' : 'dark-link'}>
                       <li className={theme == 'light' ? 'light-li' : 'dark-li'}>
-                        <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${dadosUser.imagemPerfil}` : profileImg} alt="" />
+                        <img id="image" src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${dadosUser.imagemPerfil}` : profileImg} alt="" />
                         {
                           windows > 1246 ?
                           (<p style={{ color: theme == 'light' ? 'black' : '' }}>Perfil</p>)
