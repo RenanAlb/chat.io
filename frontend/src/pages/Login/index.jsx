@@ -27,13 +27,11 @@ const Login = () => {
     }
   };
 
-
-  if (ok) {
-    return <Loading/>;
-  }
-
   return (
     <Container>
+      {
+        ok && (<Loading/>)
+      }
       <div className="chatio">
         <h1>Chat.io</h1>
         <h1>Chat.io</h1>
