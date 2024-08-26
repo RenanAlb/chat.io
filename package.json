@@ -1,0 +1,12 @@
+{
+  "name": "chat.io",
+  "version": "1.0.0",
+  "description": "Um chat online feito com NodeJS, ReactJS, ExpressJS, MongoDB e Socket.io",
+  "scripts": {
+    "install-all": "npm install --prefix frontend && npm install --prefix backend",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend",
+    "start": "node index.js"
+  },
+  "author": "Renan Albuquerque",
+  "license": "ISC"
+}
