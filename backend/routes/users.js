@@ -3,6 +3,10 @@ const User = require('../models/users');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+
+const app = express();
+app.use(cookieParser());
 
 const authenticate = (req, res, next) => {
   const token = req.cookies.token;
@@ -22,6 +26,8 @@ const authenticate = (req, res, next) => {
 };
 
 router.post('/cadastro', async (req, res) => {
+  res.clearCookie('token', { path: '/' });
+
   try {
     const { nome, email, senha } = req.body;
     const verificarUser = await User.findOne({ email });
@@ -44,6 +50,8 @@ router.post('/cadastro', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+  res.clearCookie('token', { path: '/' });
+
   try {
     const { email, senha } = req.body;
     console.log('email:', email);
