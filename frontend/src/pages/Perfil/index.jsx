@@ -45,12 +45,11 @@ const Perfil = () => {
     console.log(file);
 
     if (file) {
-      if (file.type == 'image/jpeg' || file.type == 'image/png' || file.type == 'image/jpg') {
-        url = URL.createObjectURL(file);
-        setImageSrc(file);
-      } else {
-        alert('Tipo não suportado!')
-      }
+      url = URL.createObjectURL(file);
+      setImageSrc(file);
+    } else {
+      alert('Arquivo não encontrado!');
+      console.error('Arquivo não encontrado!');
     }
   };
 
