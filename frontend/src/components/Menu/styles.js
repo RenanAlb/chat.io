@@ -9,6 +9,7 @@ export const ContainerMenu = styled.div`
   border-right: 1px solid ${(props) => props.theme == 'light' ? `${Themes.colors.light_white2}` : `${Themes.colors.light_gray}`};
 
   .image-perfil img {
+    background-color: white;
     width: 54px;
     height: 54px;
     object-fit: cover;
