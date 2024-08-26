@@ -74,7 +74,7 @@ const Perfil = () => {
           (
             <div className="container-perfil">
               <div className="image">
-                <img src={dadosUser.imagemPerfil ? `http://localhost:8080/${dadosUser.imagemPerfil}` : `${profileImg}`} alt="Imagem de perfil do usuário" id={theme == 'light' ? 'light-img' : 'dark-img'} />
+                <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${dadosUser.imagemPerfil}` : `${profileImg}`} alt="Imagem de perfil do usuário" id={theme == 'light' ? 'light-img' : 'dark-img'} />
                 <div>
                   <span className="material-symbols-outlined" id={theme == 'light' ? 'light-edit' : 'dark-edit'} title="Mudar foto de perfil">
                     edit
