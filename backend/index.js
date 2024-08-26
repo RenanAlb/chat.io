@@ -52,7 +52,7 @@ const port = process.env.PORT || 8080;
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'https://chat-io-frontend.onrender.com',
+    origin: 'https://chat-io-jpz0.onrender.com',
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -61,7 +61,7 @@ app.use(cookieParser());
 
 // Middlewares
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
-app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
+app.use(cors({origin: 'https://chat-io-jpz0.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
