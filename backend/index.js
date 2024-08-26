@@ -154,7 +154,7 @@ app.post('/image', upload.single('data'), async (req, res) => {
         imagemPerfil = req.file.filename;
       } else {
         console.error('Tipo de arquivo não suportado: ', req.file.mimetype);
-        return res.status(400).json({ message: 'Tipo de arquivo não suportado' });
+        return res.status(400).json({ message: 'Tipo de arquivo não suportado', ok: false });
       }
 
       const userId = req.body.id;
