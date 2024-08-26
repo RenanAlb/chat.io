@@ -148,26 +148,31 @@ app.post('/image', upload.single('data'), async (req, res) => {
 
   console.log('REQ.FILE', req.file);
 
-  if (req.file) {
-    if (req.file.mimetype.startsWith('image/')) {
-      imagemPerfil = req.file.filename;
+  try {
+    if (req.file) {
+      if (req.file.mimetype.startsWith('image/')) {
+        imagemPerfil = req.file.filename;
+      } else {
+        console.error('Tipo de arquivo não suportado: ', req.file.mimetype);
+        return res.status(400).json({ message: 'Tipo de arquivo não suportado' });
+      }
+
+      const userId = req.body.id;
+
+      const image = await User.findOneAndUpdate(
+        { _id: userId },
+        { imagemPerfil: imagemPerfil },
+        { new: true }
+      );
+
+      return res.status(200).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
     } else {
-      console.error('Tipo de arquivo não suportado: ', req.file.mimetype)
-      return res.status(400).json({ message: 'Tipo de arquivo não suportado' })
+      console.error('Nenhum arquivo selecionado')
+      return res.status(400).json({ message: 'Nenhum arquivo selecionado', ok: false })
     }
-
-    const userId = req.body.id;
-
-    const image = await User.findOneAndUpdate(
-      { _id: userId },
-      { imagemPerfil: imagemPerfil },
-      { new: true }
-    );
-
-    res.status(201).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
-  } else {
-    console.error('Nenhum arquivo selecionado')
-    return res.status(400).json({ message: 'Nenhum arquivo selecionado', ok: false })
+  } catch(error) {
+    console.error(error);
+    res.status(500).json({ message: error, ok: false });
   }
 });
 

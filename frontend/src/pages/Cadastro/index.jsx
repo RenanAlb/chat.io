@@ -16,13 +16,14 @@ const Cadastro = () => {
 
     if (nome && email && senha) {
       const response = await cadastroServer(nome, email, senha);
-      setOk(true);
 
       if (response) {
         console.log(response);
+        setOk(false);
         navigate('/home');
       } else {
         setOk(false);
+        alert('Erro ao se cadastrar! Tente novamente');
         console.error(response);
       }
     }
@@ -123,7 +124,7 @@ const Cadastro = () => {
             required
             onChange={(e) => setSenha(e.target.value)}
           />
-          <button type="submit">Confirmar</button>
+          <button type="submit" onClick={() => setOk(true)}>Confirmar</button>
           <p>Já tem uma conta? <a href="https://chat-io-jpz0.onrender.com/login">Clique aqui</a></p>
         </form>
       </div>
