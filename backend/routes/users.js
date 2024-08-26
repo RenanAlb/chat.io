@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
 const app = express();
+
 app.use(cookieParser());
 
 const authenticate = (req, res, next) => {
@@ -41,6 +42,8 @@ router.post('/cadastro', async (req, res) => {
     const newUser = await User.create({ nome, email, senha: hash });
 
     const token = jwt.sign({ id: newUser._id, nome: newUser.nome, email: newUser.email, imagemPerfil: newUser.imagemPerfil }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+    res.cookie('token', token, { httpOnly: true, secure: false, maxAge: 7 * 24 * 60 * 60 * 1000});
 
     res.status(200).json({ message: 'Usuário criado com sucesso!', ok: true, content: newUser, token: token });
   } catch(error) {
@@ -79,14 +82,14 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/perfil', authenticate, (req, res) => {
+router.get('/perfil', authenticate, async (req, res) => {
   if (req.user) {
     console.log(req.user);
   } else {
     return res.status(500).json({ message: 'Erro ao buscar os dados do usuário', ok: false });
   }
 
-  res.status(200).json({ message: 'Dados bsucados com sucesso', ok: true, content: req.user });
+  res.status(200).json({ message: 'Dados buscados com sucesso', ok: true, content: req.user });
 });
 
 module.exports = router;
