@@ -2,26 +2,35 @@ import { useState } from "react";
 import { Container } from "./styles";
 import { loginServer } from "../../crud";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [ok, setOk] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (email && senha) {
       const response = await loginServer(email, senha);
+      setOk(true);
 
       if (response.ok) {
         console.log(response);
         navigate('/home');
       } else {
+        setOk(false);
         console.error(response);
       }
     }
   };
+
+
+  if (ok) {
+    return <Loading/>;
+  }
 
   return (
     <Container>

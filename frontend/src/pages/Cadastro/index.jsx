@@ -2,26 +2,35 @@ import { useState } from "react";
 import { Container } from "./styles";
 import { cadastroServer } from "../../crud";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading";
 
 const Cadastro = () => {
+  const navigate = useNavigate();
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [ok, setOk] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (nome && email && senha) {
       const response = await cadastroServer(nome, email, senha);
+      setOk(true);
 
       if (response) {
         console.log(response);
         navigate('/home');
       } else {
+        setOk(false);
         console.error(response);
       }
     }
   };
+
+  if (ok) {
+    return <Loading/>;
+  }
 
   return (
     <Container>
