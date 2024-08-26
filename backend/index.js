@@ -60,7 +60,7 @@ const io = socketIo(server, {
 app.use(cookieParser());
 
 // Middlewares
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 app.use(cors({origin: 'https://chat-io-frontend.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -85,7 +85,7 @@ connectToMongoDB();
 
 // Rotas
 app.get('*', (req, res) => {
-  const filePath = path.join(__dirname, '../frontend/dist/assets');
+  const filePath = path.join(__dirname, '../../frontend/dist');
   console.log('File path:', filePath);
   console.log('Current Directory:', __dirname);
   console.log('Serving files from:', path.join(__dirname, '../frontend/dist'));
