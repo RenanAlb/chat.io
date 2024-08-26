@@ -30,9 +30,18 @@ export const ContainerChat = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% - 17px);
     padding: 15px;
     z-index: 1;
+  }
+  @media screen and (min-width: 500px) {
+    .header-fixed-chat {
+      width: calc(100% - 17px);
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .header-fixed-chat {
+      width: calc(100% - 10px);
+    }
   }
   #light-hfc {
     background: linear-gradient(to bottom, white, #ffffff28);
@@ -111,6 +120,7 @@ export const ContainerChat = styled.div`
     flex-direction: column;
     position: relative;
     animation: chat 0.4s ease-in-out;
+    min-width: 10px;
     transition: 0.1s;
   }
 

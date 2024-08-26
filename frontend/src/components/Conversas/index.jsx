@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from "react";
 import { pesquisarServer, getUserServer, getUsersTalkServer } from "../../crud";
 import { useTheme } from '../../context/ThemeContext';
-import Themes from "../../Themes";
-import FazerLogin from "../FazerLogin";
 
 const Conversas = ({ onSelectChat }) => {
   const { theme, toggleTheme } = useTheme();
@@ -72,7 +70,7 @@ const Conversas = ({ onSelectChat }) => {
                 }
                   {
                     usuario.imagemPerfil ?
-                    (<img src={`https://chat-io-jpz0.onrender.com/${usuario.imagemPerfil}`}  />)
+                    (<img src={`https://chat-io-jpz0.onrender.com/images/${usuario.imagemPerfil}`}  />)
                     :
                     (<img src={profileImg} alt="" />)
                   }
@@ -98,7 +96,7 @@ const Conversas = ({ onSelectChat }) => {
                 <div key={index} className="conversa" onClick={() => onSelectChat(usuario)} id={theme == 'light' ? 'light-conversas' : 'dark-conversas'}>
                   {
                     usuario.imagemPerfil ?
-                    (<img src={`https://chat-io-jpz0.onrender.com/${usuario.imagemPerfil}`}  />)
+                    (<img src={`https://chat-io-jpz0.onrender.com/images/${usuario.imagemPerfil}`}  />)
                     :
                     (<img src={profileImg} alt="" />)
                   }
