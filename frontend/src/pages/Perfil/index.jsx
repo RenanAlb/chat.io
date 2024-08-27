@@ -28,8 +28,10 @@ const Perfil = () => {
 
   const changeImage = async () => {
     if (imageSrc) {
+      console.log('2');
       const response = await changeImagePerfilServer(imageSrc, dadosUser.id);
       if (response.ok) {
+        console.log('3');
         console.log(response);
         setOkImg(true);
       } else {
@@ -46,6 +48,7 @@ const Perfil = () => {
 
     if (file) {
       url = URL.createObjectURL(file);
+      console.log('1');
       setImageSrc(file);
     } else {
       alert('Arquivo não encontrado!');
@@ -54,7 +57,9 @@ const Perfil = () => {
   };
 
   useEffect(() => {
-    changeImage();
+    if (imageSrc) {
+      changeImage();
+    }
   }, [imageSrc]);
 
   return(

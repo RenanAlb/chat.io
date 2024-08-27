@@ -5,10 +5,12 @@ import Conversas from "../../components/Conversas";
 import Chat from "../../components/Chat";
 import io from 'socket.io-client';
 import { getUserServer } from "../../crud";
+import { useNavigate } from "react-router-dom";
 
 const socket = io('https://chat-io-jpz0.onrender.com', { withCredentials: true });
 
 const Home = () => {
+  const navigate = useNavigate();
   const [windows, setWindows] = useState(window.innerWidth);
   const [selectedChat, setSelectedChat] = useState(null);
   const [dadosUser, setDadosUser] = useState('');
@@ -24,6 +26,7 @@ const Home = () => {
       setDadosUser(response.content);
     } else {
       console.error(response);
+      navigate('/');
     }
   };
 
