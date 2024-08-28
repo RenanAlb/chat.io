@@ -82,7 +82,7 @@ const Home = () => {
       <Conversas onSelectChat={setSelectedChat}/>
       {
         windows > 700 && !selectedChat ?
-        (<Chat chat={selectedChat} onSendMessage={sendMessage} onSelectChat={setSelectedChat} mensagens={mensagens} talkUser={selectedChat}/>)
+        (<Chat chat={selectedChat} onSendMessage={sendMessage} onSelectChat={setSelectedChat} mensagens={mensagens} user={dadosUser.id}  talkUser={selectedChat}/>)
         :
         (
           selectedChat ?
