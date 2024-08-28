@@ -5,8 +5,10 @@ import { useTheme } from '../../context/ThemeContext';
 import Themes from "../../Themes";
 import { getUserServer } from '../../crud';
 import profileImg from '../../assets/perfil.png';
+import { useNavigate } from "react-router-dom";
 
 const Menu = () => {
+  const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
   const [windows, setWindows] = useState(window.innerWidth);
   const [dadosUser, setDadosUser] = useState(null);
@@ -39,7 +41,7 @@ const Menu = () => {
       dadosUser &&
         (
           <ContainerMenu theme={theme}>
-          <div className="logo">
+          <div className="logo" onClick={() => navigate('/')}>
             {
               windows > 1246 ?
               (<h1 style={{ color: theme == 'light' ? 'black' : '' }}>Chat.io</h1>)

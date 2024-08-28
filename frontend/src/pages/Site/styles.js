@@ -137,6 +137,36 @@ export const Container = styled.div`
     color: white;
     font-size: 6.5em;
   }
+  main .right-direction .apresentation div {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid ${Themes.colors.light_gray};
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: borderColor 1.2s ease-in-out infinite;
+  }
+  @keyframes borderColor {
+    0% {
+      border: 1px solid ${Themes.colors.light_gray};
+    }
+    50% {
+      border: 1px solid white;
+    }
+    100% {
+      border: 1px solid ${Themes.colors.light_gray};
+    }
+  }
+  main .right-direction .apresentation div p {
+    color: white;
+    margin: 10px 0px;
+  }
+  main .right-direction .apresentation div span {
+    color: white;
+  }
   main .left-direction .video {
     width: 80%;
     transform: translateX(400px);
@@ -219,6 +249,12 @@ export const Container = styled.div`
     }
     header button {
       top: 9px;
+    }
+    main .right-direction .apresentation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
   @media screen and (max-width: 1040px) {

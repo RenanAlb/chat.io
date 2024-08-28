@@ -63,6 +63,12 @@ const Site = () => {
         <div className="right-direction">
           <section className="apresentation">
             <h1>Chat.io, seu site de conversa!</h1>
+            <div title="Role para baixo">
+              <p>Scroll</p>
+              <span class="material-symbols-outlined">
+                south
+              </span>
+            </div>
           </section>
         </div>
         <div className="left-direction">
@@ -85,7 +91,7 @@ const Site = () => {
             <h1>Teste agora!</h1>
             <button onClick={() => navigate('/cadastro')}>
               Entrar agora
-              <span className="material-symbols-outlined">
+              <span class="material-symbols-outlined">
                 arrow_right_alt
               </span>
             </button>
