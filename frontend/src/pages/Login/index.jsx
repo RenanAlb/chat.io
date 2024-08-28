@@ -116,7 +116,7 @@ const Login = () => {
             onChange={(e) => setSenha(e.target.value)}
           />
           <button type="submit" onClick={() => setOk(true)}>Confirmar</button>
-          <p>Não tem uma conta? <a href="https://chat-io-jpz0.onrender.com/">Registe-se</a></p>
+          <p>Não tem uma conta? <a href="https://chat-io-jpz0.onrender.com/">Registre-se</a></p>
         </form>
       </div>
     </Container>
