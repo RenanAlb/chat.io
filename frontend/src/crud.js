@@ -105,6 +105,8 @@ export const changeImagePerfilServer = async (imageSrc, id) => {
       body: formData
     });
 
+    console.log(response);
+
     if (!response.ok) {
       throw new Error('Erro ao salvar a imagem');
     }
