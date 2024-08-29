@@ -165,7 +165,7 @@ app.post('/image', upload.single('data'), async (req, res) => {
         { new: true }
       );
 
-      return res.status(200).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
+      res.status(200).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
     } else {
       console.error('Nenhum arquivo selecionado')
       return res.status(400).json({ message: 'Nenhum arquivo selecionado', ok: false })
