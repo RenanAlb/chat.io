@@ -28,7 +28,7 @@ const Perfil = () => {
 
   const changeImage = async () => {
     if (imageSrc) {
-      console.log('2');
+      console.log('2', imageSrc, dadosUser.id);
       const response = await changeImagePerfilServer(imageSrc, dadosUser.id);
       if (response.ok) {
         console.log('3');
@@ -41,13 +41,11 @@ const Perfil = () => {
   };
 
   const handleFileSelect = (e) => {
-    let url;
     const file = e.target.files[0];
     console.log('filetype => ', file.type);
     console.log(file);
 
     if (file) {
-      url = URL.createObjectURL(file);
       console.log('1');
       setImageSrc(file);
     } else {

@@ -145,35 +145,29 @@ app.post('/users-talk', async (req, res) => {
 // Get imagem de perfil
 app.post('/image', upload.single('data'), async (req, res) => {
   let imagemPerfil = '';
-  let image = '';
+
   console.log('REQ.FILE', req.file);
 
-  try {
-    if (req.file) {
-      if (req.file.mimetype.startsWith('image/')) {
-        imagemPerfil = req.file.filename;
-      } else {
-        console.error('Tipo de arquivo não suportado: ', req.file.mimetype);
-        return res.status(400).json({ message: 'Tipo de arquivo não suportado', ok: false });
-      }
-
-      const userId = req.body.id;
-
-      image = await User.findOneAndUpdate(
-        { _id: userId },
-        { imagemPerfil: imagemPerfil },
-        { new: true }
-      );
-
+  if (req.file) {
+    if (req.file.mimetype.startsWith('image/')) {
+      imagemPerfil = req.file.filename;
     } else {
-      console.error('Nenhum arquivo selecionado')
-      return res.status(400).json({ message: 'Nenhum arquivo selecionado', ok: false })
+      console.error('Tipo de arquivo não suportado: ', req.file.mimetype);
+      return res.status(400).json({ message: 'Tipo de arquivo não suportado' });
     }
 
-    res.status(200).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
-  } catch(error) {
-    console.error(error);
-    res.status(500).json({ message: error, ok: false });
+    const userId = req.body.id;
+
+    const image = await User.findOneAndUpdate(
+      { _id: userId },
+      { imagemPerfil: imagemPerfil },
+      { new: true }
+    );
+
+    res.status(201).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
+  } else {
+    console.error('Nenhum arquivo selecionado');
+    return res.status(400).json({ message: 'Nenhum arquivo selecionado', ok: false });
   }
 });
 
