@@ -267,7 +267,7 @@ export const Container = styled.div`
   @media screen and (max-width: 480px) {
     main .right-direction .apresentation h1 {
       color: white;
-      font-size: 2.1em;
+      font-size: 2.6em;
     }
     main .right-direction .text h1 {
       font-size: 2.1em;
