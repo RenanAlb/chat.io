@@ -145,7 +145,7 @@ app.post('/users-talk', async (req, res) => {
 // Get imagem de perfil
 app.post('/image', upload.single('data'), async (req, res) => {
   let imagemPerfil = '';
-
+  let image = '';
   console.log('REQ.FILE', req.file);
 
   try {
@@ -159,17 +159,18 @@ app.post('/image', upload.single('data'), async (req, res) => {
 
       const userId = req.body.id;
 
-      const image = await User.findOneAndUpdate(
+      image = await User.findOneAndUpdate(
         { _id: userId },
         { imagemPerfil: imagemPerfil },
         { new: true }
       );
 
-      res.status(200).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
     } else {
       console.error('Nenhum arquivo selecionado')
       return res.status(400).json({ message: 'Nenhum arquivo selecionado', ok: false })
     }
+
+    res.status(200).json({ message: 'Imagem salva com sucesso', ok: true, imagemPerfil: image.imagemPerfil });
   } catch(error) {
     console.error(error);
     res.status(500).json({ message: error, ok: false });
