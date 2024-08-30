@@ -64,7 +64,7 @@ app.use(cors({origin: 'https://chat-io-jpz0.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
+app.use(express.static('public/images'));
 
 // Storage
 const storage = multer.diskStorage({
