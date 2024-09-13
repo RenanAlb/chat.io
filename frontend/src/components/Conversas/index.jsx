@@ -43,7 +43,7 @@ const Conversas = ({ onSelectChat }) => {
     const response = await getUsersTalkServer(data.id);
 
     if (response.ok) {
-      const filterMe = response.content.filter((e) => e._id !== dadosUser.id);
+      const filterMe = response.content.filter((e) => e._id !== data.id);
       console.log('filterMe', filterMe)
       setConversas(filterMe);
     } else {
