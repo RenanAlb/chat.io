@@ -11,6 +11,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 
+const imageDir = path.join(__dirname, 'public/images');
+console.log('ImageDir', imageDir);
+if (!fs.existsSync(imageDir)) {
+  fs.mkdirSync(imageDir, { recursive: true });
+}
+
 // Função para listar o conteúdo de um diretório
 const listDirectoryContents = (directoryPath) => {
   fs.readdir(directoryPath, (err, files) => {
