@@ -30,8 +30,9 @@ const Conversas = ({ onSelectChat }) => {
       const response = await pesquisarServer(pesquisa);
 
       if (response.ok) {
-        console.log(response);
-        setBuscaPesquisa(response.message);
+        const filterMe = response.message.filter((e) => e._id !== dadosUser.id);
+        console.log('filterMe', filterMe)
+        setBuscaPesquisa(filterMe);
       } else {
         return [];
       }
@@ -42,8 +43,9 @@ const Conversas = ({ onSelectChat }) => {
     const response = await getUsersTalkServer(data.id);
 
     if (response.ok) {
-      console.log(response);
-      setConversas(response.content);
+      const filterMe = response.content.filter((e) => e._id !== dadosUser.id);
+      console.log('filterMe', filterMe)
+      setConversas(filterMe);
     } else {
       console.error(response);
     }
