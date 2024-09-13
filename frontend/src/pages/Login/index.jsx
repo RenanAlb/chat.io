@@ -18,7 +18,6 @@ const Login = () => {
 
       if (response.ok) {
         setOk(false);
-        console.log(response);
         navigate('/home');
       } else {
         setOk(false);

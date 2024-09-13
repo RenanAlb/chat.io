@@ -12,7 +12,7 @@ const FazerLogin = ({ onOkImg }) => {
       <div className="blur-fl"></div>
       <div className="card-fl">
         <h2>Faça login novamente para salvar as alterações</h2>
-        <p>Faça login para que as alterações sejam salvas com sucesso</p>
+        <p>Faça login para que a imagem de perfil seja carregada corretamente.</p>
         <div>
           <button onClick={() => navigate('/login')}>Fazer login</button>
           <button onClick={() => onOkImg(false)}>Depois</button>

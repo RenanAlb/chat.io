@@ -18,7 +18,6 @@ const Cadastro = () => {
       const response = await cadastroServer(nome, email, senha);
 
       if (response) {
-        console.log(response);
         setOk(false);
         navigate('/home');
       } else {

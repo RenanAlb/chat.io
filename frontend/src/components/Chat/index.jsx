@@ -7,7 +7,6 @@ import { useTheme } from '../../context/ThemeContext';
 import Themes from "../../Themes";
 import profileImg from '../../assets/perfil.png';
 
-
 const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) => {
   const { theme } = useTheme();
   const [mensagem, setMensagem] = useState('');
@@ -25,7 +24,6 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
       const response = await buscarMensagensServer(user, chat._id);
 
       if (response) {
-        console.log('MONGO', response);
         setMensagensAntigas(response.mensagens);
       } else {
         console.error(response);
@@ -66,14 +64,20 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
                 {
                   windows < 700 ?
                   (
-                    <span className="material-symbols-outlined" onClick={() => onSelectChat(null)} style={{ color: theme === 'light' ? 'black' : '' }}>
+                    <span
+                      className="material-symbols-outlined"
+                      onClick={() => onSelectChat(null)}
+                      style={{ color: theme === 'light' ? 'black' : '' }}
+                    >
                       arrow_back
                     </span>
                   )
                   :
                   null
                 }
-                <img src={talkUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${talkUser.imagemPerfil}` : profileImg} alt="Imagem de perfil do usuário" />
+                <img
+                src={talkUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${talkUser.imagemPerfil}` : profileImg}
+                alt="Imagem de perfil do usuário" />
                 <p style={{ color: theme === 'light' ? 'black' : '' }}>{chat._id == user ? chat.nome + ' (Você)' : chat.nome }</p>
               </div>
             </div>
@@ -134,7 +138,18 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
               }
             </div>
             <div className="send-message">
-              <input type="text" placeholder="Mensagem..." value={mensagem} onChange={(e) => setMensagem(e.target.value)} style={{ backgroundColor: theme === 'light' ? `${Themes.colors.light_white2}` : '', color: theme === 'light' ? 'black' : '' }} />
+              <input
+                type="text"
+                placeholder="Mensagem..."
+                value={mensagem}
+                onKeyDown={(e) => {
+                  if (e.key == 'Enter') {
+                    handleSend();
+                  }
+                }}
+                onChange={(e) => setMensagem(e.target.value)}
+                style={{ backgroundColor: theme === 'light' ? `${Themes.colors.light_white2}` : '', color: theme === 'light' ? 'black' : '' }}
+              />
               <button>
                 <span className="material-symbols-outlined" onClick={handleSend}>
                   arrow_right_alt

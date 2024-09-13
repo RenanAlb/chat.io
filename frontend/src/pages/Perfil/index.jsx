@@ -15,7 +15,6 @@ const Perfil = () => {
   const getUser = async () => {
     const response = await getUserServer();
     if (response.ok) {
-      console.log(response);
       setDadosUser(response.content);
     } else {
       console.error(response);
@@ -28,11 +27,8 @@ const Perfil = () => {
 
   const changeImage = async () => {
     if (imageSrc) {
-      console.log('2', imageSrc, dadosUser.id);
       const response = await changeImagePerfilServer(imageSrc, dadosUser.id);
       if (response.ok) {
-        console.log('3');
-        console.log(response);
         setOkImg(true);
       } else {
         console.error(response);
@@ -42,8 +38,6 @@ const Perfil = () => {
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
-    console.log('filetype => ', file.type);
-    console.log(file);
 
     if (file) {
       console.log('1');
@@ -78,7 +72,11 @@ const Perfil = () => {
               <div className="image">
                 <img src={dadosUser.imagemPerfil ? `https://chat-io-jpz0.onrender.com/images/${dadosUser.imagemPerfil}` : `${profileImg}`} alt="Imagem de perfil do usuário" id={theme == 'light' ? 'light-img' : 'dark-img'} />
                 <div>
-                  <span className="material-symbols-outlined" id={theme == 'light' ? 'light-edit' : 'dark-edit'} title="Mudar foto de perfil">
+                  <span
+                    className="material-symbols-outlined"
+                    id={theme == 'light' ? 'light-edit' : 'dark-edit'}
+                    title="Mudar foto de perfil"
+                  >
                     edit
                   </span>
                   <input
@@ -92,7 +90,10 @@ const Perfil = () => {
               </div>
               <p className={theme == 'light' ? 'light' : 'black'}>{dadosUser.nome}</p>
               <strong>{dadosUser.email}</strong>
-              <button onClick={toggleTheme} className={theme == 'light' ? 'light-button' : 'dark-button'}>
+              <button
+                onClick={toggleTheme}
+                className={theme == 'light' ? 'light-button' : 'dark-button'}
+              >
                 {
                   theme == 'light' ?
                   ('Modo escuro')

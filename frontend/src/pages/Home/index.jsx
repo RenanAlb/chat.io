@@ -22,7 +22,6 @@ const Home = () => {
     const response = await getUserServer();
 
     if (response.ok) {
-      console.log(response.content);
       setDadosUser(response.content);
     } else {
       console.error(response);
@@ -47,7 +46,6 @@ const Home = () => {
       socket.emit('register', dadosUser.id);
 
       socket.on('receiveMessage', (msg) => {
-        console.log('aqui', msg);
 
         setMensagens((prevMensagens) => {
           const mensagemExistente = prevMensagens.find(m => m.mensagem === msg.mensagem && m.de === msg.de);
@@ -65,16 +63,9 @@ const Home = () => {
   }, [dadosUser]);
 
   const sendMessage = (mensagem, para) => {
-    console.log('sendMessage', mensagem, 'para', para);
-
     setMensagens((prevMensagens) => [...prevMensagens, { de: dadosUser.id, para, mensagem }]);
-
     socket.emit('sendMessage', { de: dadosUser.id, para, mensagem });
   };
-
-  console.log('MENSAGENS', mensagens);
-
-  console.log(selectedChat)
 
   return (
     <Container>
@@ -82,11 +73,27 @@ const Home = () => {
       <Conversas onSelectChat={setSelectedChat}/>
       {
         windows > 700 && !selectedChat ?
-        (<Chat chat={selectedChat} onSendMessage={sendMessage} onSelectChat={setSelectedChat} mensagens={mensagens} user={dadosUser.id}  talkUser={selectedChat}/>)
+        (<Chat
+          chat={selectedChat}
+          onSendMessage={sendMessage}
+          onSelectChat={setSelectedChat}
+          mensagens={mensagens}
+          user={dadosUser.id}
+          talkUser={selectedChat}
+          />
+        )
         :
         (
           selectedChat ?
-          (<Chat chat={selectedChat} onSendMessage={sendMessage} onSelectChat={setSelectedChat} mensagens={mensagens} user={dadosUser.id} talkUser={selectedChat}/>)
+          (<Chat
+            chat={selectedChat}
+            onSendMessage={sendMessage}
+            onSelectChat={setSelectedChat}
+            mensagens={mensagens}
+            user={dadosUser.id}
+            talkUser={selectedChat}
+            />
+          )
           :
           (null)
         )

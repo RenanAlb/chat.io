@@ -16,7 +16,6 @@ const Menu = () => {
   const getUser = async () => {
     const response = await getUserServer();
     if (response.ok) {
-      console.log(response);
       setDadosUser(response.content);
     } else {
       console.error(response);
