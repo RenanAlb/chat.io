@@ -22,6 +22,7 @@ const Home = () => {
     const response = await getUserServer();
 
     if (response.ok) {
+      console.log(response.content);
       setDadosUser(response.content);
     } else {
       console.error(response);
