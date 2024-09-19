@@ -116,7 +116,7 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
               }
               {
                 getMensagens ?
-                mensagens.map((mensagemUser, index) => (
+                getMensagens.map((mensagemUser, index) => (
                   <div key={index}>
                     {
                       user === mensagemUser.de ?
