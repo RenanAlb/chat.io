@@ -12,6 +12,7 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
   const [mensagem, setMensagem] = useState('');
   const [mensagensAntigas, setMensagensAntigas] = useState([]);
   const [windows, setWindows] = useState(window.innerWidth);
+  const [getMensagens, setGetMensagens] = useState([]);
 
   const chatRef = useRef(null);
 
@@ -34,6 +35,10 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
   useEffect(() => {
     buscarMensagens();
   }, [chat, user]);
+
+  useEffect(() => {
+    setGetMensagens(mensagens);
+  }, [mensagens])
 
   useEffect(() => {
     const handleResize = () => {
@@ -110,7 +115,7 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
                 ))
               }
               {
-                mensagens &&
+                getMensagens ?
                 mensagens.map((mensagemUser, index) => (
                   <div key={index}>
                     {
@@ -135,6 +140,8 @@ const Chat = ({ chat, onSelectChat, onSendMessage, mensagens, user, talkUser }) 
                     }
                   </div>
                 ))
+                :
+                null
               }
             </div>
             <div className="send-message">
